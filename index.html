@@ -28,9 +28,12 @@
         .nav-links a { margin-left: 30px; text-decoration: none; color: var(--black); font-size: 0.8rem; text-transform: uppercase; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
         .nav-links a:hover { color: var(--gold); }
 
+        /* L'IMAGE DU MAGASIN CHIC EN HAUT */
         .hero {
             height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-            background: linear-gradient(rgba(17, 17, 17, 0.5), rgba(17, 17, 17, 0.7)), url('https://images.unsplash.com/photo-1555529771-835f59bfc50c?auto=format&fit=crop&q=80') center/cover fixed;
+            background-color: var(--black);
+            background-image: linear-gradient(rgba(17, 17, 17, 0.4), rgba(17, 17, 17, 0.6)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover; background-position: center; background-attachment: fixed;
             color: var(--white); padding: 0 20px;
         }
         .hero-subtitle { font-size: 1rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; animation: fadeInDown 1s ease; font-weight: 400; }
@@ -75,6 +78,19 @@
         .ed-text h4 { font-size: 0.8rem; text-transform: uppercase; color: var(--gold); letter-spacing: 2px; margin-bottom: 10px; font-weight: 700; }
         .ed-text p { margin-bottom: 25px; font-size: 1rem; color: var(--gray); line-height: 1.8; }
         .ed-text p.drop-cap::first-letter { float: left; font-family: 'Bodoni Moda', serif; font-size: 4.5rem; line-height: 0.8; padding-right: 15px; color: var(--gold); }
+
+        /* IMAGE ASYMÉTRIQUE SÉCURISÉE */
+        .image-coupole {
+            background-color: var(--light-gray);
+            background-image: url('https://images.unsplash.com/photo-1555529771-835f59bfc50c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'); 
+            /* J'ai remis l'image chic de magasin/mode ici pour que ça marche à 100% sur Unsplash */
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            height: 750px; 
+            width: 100%; 
+            box-shadow: -20px 20px 0px var(--off-white), -20px 20px 0px 1px #eee;
+        }
 
         /* VALEURS */
         .values-section { background: var(--black); color: var(--white); text-align: center; }
@@ -135,7 +151,7 @@
         <a href="#synergie" class="hero-btn">Découvrir ma démarche</a>
     </header>
 
-   <section id="synergie" class="reveal">
+    <section id="synergie" class="reveal">
         <div class="mindset-quote">
             <p>"Apporter mon énergie opérationnelle tout en me nourrissant de l'expertise de vos acheteurs : voilà l'ambition de mon alternance."</p>
             <span>— L'état d'esprit de ma candidature</span>
@@ -168,8 +184,7 @@
 
     <section id="missions" style="background: var(--white);">
         <div class="editorial-grid reveal">
-            <div style="background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Galeries_Lafayette_Paris_Feb_2013.jpg/1024px-Galeries_Lafayette_Paris_Feb_2013.jpg') center/cover; height: 750px; width: 100%; box-shadow: -20px 20px 0px var(--off-white), -20px 20px 0px 1px #eee;">
-            </div>
+            <div class="image-coupole"></div>
 
             <div class="ed-text">
                 <h2 style="font-family: 'Bodoni Moda', serif; font-size: 2.5rem; margin-bottom: 30px;">Apprendre par l'action</h2>
