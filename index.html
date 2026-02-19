@@ -7,13 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- VARIABLES & RESET --- */
+        /* --- VARIABLES --- */
         :root {
             --black: #111111;
             --white: #ffffff;
             --off-white: #f8f8f8;
             --gold: #b8975a;
             --gray: #666666;
+            --light-gray: #eeeeee;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,27 +23,18 @@
 
         /* --- NAVIGATION --- */
         nav {
-            position: fixed;
-            top: 0; width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 5%;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        /* Le logo collab dans le menu */
         .nav-logo { font-family: 'Bodoni Moda', serif; font-size: 1.1rem; font-weight: 700; text-decoration: none; color: var(--black); letter-spacing: 2px; text-transform: uppercase;}
         .nav-links a { margin-left: 30px; text-decoration: none; color: var(--black); font-size: 0.8rem; text-transform: uppercase; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
         .nav-links a:hover { color: var(--gold); }
 
         /* --- HERO HEADER --- */
         .hero {
-            height: 100vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
             background: linear-gradient(rgba(17, 17, 17, 0.4), rgba(17, 17, 17, 0.6)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80') center/cover fixed;
-            color: var(--white);
-            padding: 0 20px;
+            color: var(--white); padding: 0 20px;
         }
         .hero-subtitle { font-size: 1rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; animation: fadeInDown 1s ease; font-weight: 400; }
         .hero-title { font-family: 'Bodoni Moda', serif; font-size: clamp(3rem, 8vw, 6rem); line-height: 1.1; text-transform: uppercase; margin-bottom: 30px; animation: fadeInUp 1s ease; }
@@ -58,36 +50,50 @@
         .section-header h2 { font-family: 'Bodoni Moda', serif; font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
         .section-header p { color: var(--gold); font-style: italic; font-family: 'Bodoni Moda', serif; font-size: 1.2rem; }
 
-        /* --- LAYOUT EDITORIAL (AS SYMÉTRIQUE) --- */
-        .editorial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .ed-text h3 { font-family: 'Bodoni Moda', serif; font-size: 1.8rem; margin-top: 30px; margin-bottom: 15px; color: var(--black); }
-        .ed-text p { margin-bottom: 15px; font-size: 1rem; color: var(--gray); }
-        .ed-text ul { list-style: none; margin-bottom: 20px; color: var(--gray); font-size: 0.95rem; }
-        .ed-text li { margin-bottom: 10px; padding-left: 20px; position: relative; }
-        .ed-text li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
-        .ed-text p.drop-cap::first-letter { float: left; font-family: 'Bodoni Moda', serif; font-size: 4.5rem; line-height: 0.8; padding-right: 15px; color: var(--gold); }
-        
-        /* --- EXPERIENCES (LES 3 MISSIONS) --- */
-        .experience-container { border-left: 2px solid var(--black); padding-left: 40px; margin-left: 20px; }
-        .job-card { position: relative; margin-bottom: 60px; }
-        .job-card::before {
-            content: ''; position: absolute; left: -47px; top: 5px; width: 12px; height: 12px; 
-            background: var(--gold); border-radius: 50%; border: 3px solid var(--off-white);
+        /* --- SYNERGIE INTERACTIVE (NOUVEAU) --- */
+        .synergy-container { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 50px; }
+        .syn-card {
+            flex: 1; min-width: 300px; background: var(--white); padding: 50px; border: 1px solid var(--light-gray);
+            position: relative; overflow: hidden; transition: all 0.5s ease; cursor: default;
         }
-        .job-card h3 { font-family: 'Bodoni Moda', serif; font-size: 1.8rem; margin-bottom: 5px; }
-        .job-card .company { font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 15px; display: inline-block; color: var(--gold); }
-        .job-card p { color: var(--gray); margin-top: 10px; }
+        /* Effet de remplissage au survol */
+        .syn-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--black); transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 0;
+        }
+        .syn-card:hover::before { transform: translateY(0); }
+        .syn-card * { position: relative; z-index: 1; transition: color 0.4s ease; }
+        .syn-card:hover * { color: var(--white) !important; }
+        .syn-card h3 { font-family: 'Bodoni Moda', serif; font-size: 2rem; margin-bottom: 25px; color: var(--black); border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
+        .syn-card ul { list-style: none; margin-top: 20px; }
+        .syn-card li { margin-bottom: 15px; font-size: 0.95rem; line-height: 1.6; color: var(--gray); padding-left: 20px; position: relative; }
+        .syn-card li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 0.8rem; top: 2px; }
 
-        /* --- VALEURS / ENGAGEMENTS --- */
+        /* --- MISSIONS REVISITÉES (PLAN D'ACTION) --- */
+        .editorial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .ed-text h3 { font-family: 'Bodoni Moda', serif; font-size: 1.8rem; margin-top: 30px; margin-bottom: 10px; color: var(--black); }
+        .ed-text h4 { font-size: 0.8rem; text-transform: uppercase; color: var(--gold); letter-spacing: 2px; margin-bottom: 10px; }
+        .ed-text p { margin-bottom: 25px; font-size: 1rem; color: var(--gray); line-height: 1.8; }
+        .ed-text p.drop-cap::first-letter { float: left; font-family: 'Bodoni Moda', serif; font-size: 4.5rem; line-height: 0.8; padding-right: 15px; color: var(--gold); }
+
+        /* --- VALEURS --- */
         .values-section { background: var(--black); color: var(--white); text-align: center; }
         .values-section h2 { font-family: 'Bodoni Moda', serif; font-size: 3rem; margin-bottom: 20px; }
         .values-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 50px; }
         .value-card { border: 1px solid rgba(255,255,255,0.2); padding: 40px; transition: 0.3s; }
-        .value-card:hover { border-color: var(--gold); }
+        .value-card:hover { border-color: var(--gold); transform: translateY(-5px); }
         .value-card h4 { font-family: 'Bodoni Moda', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 15px; }
 
-        /* --- CONTACT & TELECHARGEMENT --- */
+        /* --- CONTACT & RESEAUX --- */
         .contact-section { background: var(--white); text-align: center; }
+        .contact-info { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
+        .contact-info a { 
+            font-size: 1.1rem; font-weight: 500; color: var(--black); text-decoration: none; 
+            padding: 15px 30px; border: 1px solid var(--light-gray); border-radius: 50px; transition: 0.3s;
+        }
+        .contact-info a:hover { border-color: var(--black); background: var(--off-white); }
+        .contact-info span { color: var(--gold); margin-right: 10px; }
+
         .download-box { margin-top: 40px; padding: 60px; background: var(--off-white); border: 1px dashed var(--gray); }
         .btn-download {
             display: inline-block; padding: 20px 50px; background: var(--black); color: var(--white); 
@@ -96,14 +102,13 @@
         }
         .btn-download:hover { background: transparent; color: var(--black); }
 
-        /* --- ANIMATIONS (Scroll Reveal) --- */
+        /* --- ANIMATIONS --- */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             .editorial-grid, .values-grid { grid-template-columns: 1fr; }
             .nav-links { display: none; }
@@ -131,61 +136,63 @@
     </header>
 
     <section id="synergie" class="reveal">
-        <div class="editorial-grid">
-            <div class="ed-text">
-                <h2 style="font-family: 'Bodoni Moda', serif; font-size: 2.5rem; margin-bottom: 20px;">Une synergie évidente.</h2>
-                <p class="drop-cap">Issue d'une classe préparatoire littéraire, j'ai cultivé un esprit de synthèse pointu. Aujourd'hui en Master Achats (MAI) à Kedge BS, je construis un profil alliant rigueur analytique et sensibilité produit.</p>
-                
+        <div class="section-header">
+            <h2>Une synergie évidente</h2>
+            <p>Ce que nous pouvons accomplir ensemble.</p>
+        </div>
+        
+        <div class="synergy-container">
+            <div class="syn-card">
                 <h3>Ce que je vous apporte</h3>
+                <p style="color: var(--gray); margin-bottom: 20px;">Mon énergie et une solide base opérationnelle pour soutenir votre Direction de l'Offre au quotidien :</p>
                 <ul>
-                    <li><strong>Analyse Data & Marges :</strong> Aisance sur Excel (Recherche X, TCD) et Power BI pour des Sample Reviews précises.</li>
-                    <li><strong>Suivi Logistique :</strong> Mon poste chez Claudie Pierlot m'apprend à fiabiliser les stocks et anticiper les aléas en Europe.</li>
-                    <li><strong>Sourcing :</strong> Habituée à négocier à l'international (Worldline) avec un anglais professionnel (B2).</li>
-                </ul>
-
-                <h3>Ce que je viens apprendre</h3>
-                <ul>
-                    <li><strong>L'œil Produit :</strong> Affiner ma sensibilité aux matières avec votre département Style.</li>
-                    <li><strong>L'Écosystème PLM :</strong> Maîtriser PLM Centric grâce à ma facilité d'adaptation aux outils ERP (Basware).</li>
-                    <li><strong>L'Audace :</strong> Prendre des initiatives dans une équipe qui fait bouger les lignes du commerce.</li>
+                    <li><strong>Analyse Data & Marges :</strong> Une vraie aisance sur Excel (Recherche X, TCD) et Power BI pour vous assurer des Sample Reviews d'une précision chirurgicale.</li>
+                    <li><strong>Suivi Logistique terrain :</strong> Mon poste actuel (Claudie Pierlot) m'a appris à anticiper les imprévus et fiabiliser les stocks sur le réseau Europe.</li>
+                    <li><strong>Force de Négociation :</strong> Habituée à sourcer à l'international (Worldline) avec un anglais professionnel (B2).</li>
+                    <li><strong>Esprit de Synthèse :</strong> Issue d'une prépa littéraire, je rédige des dossiers techniques clairs pour communiquer efficacement avec vos fournisseurs.</li>
                 </ul>
             </div>
-            
-            <div style="background: url('https://images.unsplash.com/photo-1596462502278-27bf85033e54?auto=format&fit=crop&q=80') center/cover; height: 650px; width: 100%; box-shadow: 20px 20px 0px var(--off-white), 20px 20px 0px 1px #eee;">
+
+            <div class="syn-card">
+                <h3>Ce que vous m'apportez</h3>
+                <p style="color: var(--gray); margin-bottom: 20px;">L'opportunité d'évoluer dans l'univers lifestyle le plus prestigieux et d'apprendre des meilleurs :</p>
+                <ul>
+                    <li><strong>L'œil Produit :</strong> Affiner ma sensibilité aux matières et aux coupes en travaillant de concert avec votre département Style.</li>
+                    <li><strong>L'Écosystème PLM :</strong> Maîtriser PLM Centric, forte de mon adaptabilité rapide aux outils ERP complexes (Basware).</li>
+                    <li><strong>L'Univers Galeries Lafayette :</strong> Comprendre de l'intérieur ce qui fait la magie et le succès de vos collections exclusives.</li>
+                    <li><strong>Le goût du challenge :</strong> Prendre des initiatives au sein d'une équipe qui fait bouger les lignes du commerce de détail.</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <section id="missions" style="background: var(--white);">
-        <div class="section-header reveal">
-            <h2>Prête pour le Terrain</h2>
-            <p>Répondre à vos trois missions clés.</p>
-        </div>
-        
-        <div class="experience-container reveal">
-            <div class="job-card">
-                <h3>1. Collection</h3>
-                <span class="company">Interface fournisseurs & Sample Reviews</span>
-                <p>Analyse fine du rapport qualité/prix/délai. Rédaction structurée des dossiers techniques et organisation méticuleuse des portants avec les prix d'achat et les marges associées.</p>
+        <div class="editorial-grid reveal">
+            <div style="background: url('https://images.unsplash.com/photo-1596462502278-27bf85033e54?auto=format&fit=crop&q=80') center/cover; height: 750px; width: 100%; box-shadow: -20px 20px 0px var(--off-white), -20px 20px 0px 1px #eee;">
             </div>
 
-            <div class="job-card">
-                <h3>2. Négociation</h3>
-                <span class="company">Préparation & Stratégie</span>
-                <p>Soutien actif aux acheteurs lors des rendez-vous. Sourcing rigoureux et gestion des appels d'offres inspirés de ma première expérience d'Acheteuse Junior chez Worldline.</p>
-            </div>
+            <div class="ed-text">
+                <h2 style="font-family: 'Bodoni Moda', serif; font-size: 2.5rem; margin-bottom: 30px;">Mon Plan d'Action</h2>
+                <p class="drop-cap">Loin d'être une simple exécutante, j'ai analysé vos besoins pour y répondre avec proactivité et méthode. Voici comment j'aborderai vos trois défis principaux.</p>
+                
+                <h4>Mission 01</h4>
+                <h3>Optimiser la Collection</h3>
+                <p>Je mettrai ma maîtrise des datas au service de vos <strong>Sample Reviews</strong>. Mon objectif : vous fournir une lecture immédiate et claire des prix d'achat et des marges, tout en assurant une interface fluide avec vos fournisseurs pour le suivi des premiers prototypes.</p>
 
-            <div class="job-card">
-                <h3>3. Production</h3>
-                <span class="company">Contrôle qualité & Plannings</span>
-                <p>Relances fournisseurs régulières pour tenir les délais. Vérification de la conformité des échantillons réceptionnés, en capitalisant sur ma maîtrise actuelle des flux physiques.</p>
+                <h4>Mission 02</h4>
+                <h3>Épauler vos Négociations</h3>
+                <p>Forte de ma première expérience d'Acheteuse Junior (Worldline), je ne me contenterai pas de préparer les rendez-vous. Je serai un véritable soutien analytique et stratégique lors de vos échanges commerciaux, y compris à l'international.</p>
+
+                <h4>Mission 03</h4>
+                <h3>Sécuriser la Production</h3>
+                <p>La gestion des flux n'a plus de secret pour moi grâce à mon rôle chez Claudie Pierlot. Je serai la garante de vos plannings de collection, de la relance des fournisseurs jusqu'au contrôle intransigeant de la conformité des échantillons.</p>
             </div>
         </div>
     </section>
 
     <section id="engagements" class="values-section reveal">
         <h2>Un Commerce Engagé</h2>
-        <p style="max-width: 700px; margin: 0 auto; color: #ccc;">Votre charte StOpE et votre engagement pour la Diversité et l'Inclusion font écho à mes actions associatives.</p>
+        <p style="max-width: 700px; margin: 0 auto; color: #ccc;">Votre engagement pour la Diversité, l'Inclusion et la charte StOpE fait écho à mes propres actions de terrain.</p>
         
         <div class="values-grid">
             <div class="value-card">
@@ -205,9 +212,10 @@
             <p>Dans l'attente d'échanger avec vos dénicheurs de talents ou avec Morgan.</p>
         </div>
 
-        <div style="font-size: 1.2rem; font-weight: 500; margin-bottom: 20px; color: var(--black);" class="reveal">
-            <p style="margin-bottom: 10px;">📞 07 82 69 88 41</p>
-            <p>✉️ ines.ducos@kedgebs.com</p>
+        <div class="contact-info reveal">
+            <a href="tel:+33782698841"><span>📞</span> 07 82 69 88 41</a>
+            <a href="mailto:ines.ducos@kedgebs.com"><span>✉️</span> ines.ducos@kedgebs.com</a>
+            <a href="https://www.linkedin.com/in/inès-ducos-b643a3219/" target="_blank"><span>in</span> LinkedIn</a>
         </div>
 
         <div class="download-box reveal">
