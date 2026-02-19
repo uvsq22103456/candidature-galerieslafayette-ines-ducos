@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- VARIABLES --- */
         :root {
             --black: #111111;
             --white: #ffffff;
@@ -21,7 +20,6 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Montserrat', sans-serif; background-color: var(--off-white); color: var(--black); line-height: 1.7; overflow-x: hidden; }
 
-        /* --- NAVIGATION --- */
         nav {
             position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
             display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; z-index: 1000; border-bottom: 1px solid rgba(0,0,0,0.05);
@@ -30,7 +28,6 @@
         .nav-links a { margin-left: 30px; text-decoration: none; color: var(--black); font-size: 0.8rem; text-transform: uppercase; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* --- HERO HEADER --- */
         .hero {
             height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
             background: linear-gradient(rgba(17, 17, 17, 0.4), rgba(17, 17, 17, 0.6)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80') center/cover fixed;
@@ -44,19 +41,17 @@
         }
         .hero-btn:hover { background: var(--white); color: var(--black); }
 
-        /* --- SECTIONS GLOBALES --- */
         section { padding: 120px 10%; }
         .section-header { text-align: center; margin-bottom: 80px; }
         .section-header h2 { font-family: 'Bodoni Moda', serif; font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
         .section-header p { color: var(--gold); font-style: italic; font-family: 'Bodoni Moda', serif; font-size: 1.2rem; }
 
-        /* --- SYNERGIE INTERACTIVE (NOUVEAU) --- */
+        /* SYNERGIE INTERACTIVE */
         .synergy-container { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 50px; }
         .syn-card {
             flex: 1; min-width: 300px; background: var(--white); padding: 50px; border: 1px solid var(--light-gray);
             position: relative; overflow: hidden; transition: all 0.5s ease; cursor: default;
         }
-        /* Effet de remplissage au survol */
         .syn-card::before {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--black); transform: translateY(100%); transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); z-index: 0;
@@ -69,14 +64,14 @@
         .syn-card li { margin-bottom: 15px; font-size: 0.95rem; line-height: 1.6; color: var(--gray); padding-left: 20px; position: relative; }
         .syn-card li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 0.8rem; top: 2px; }
 
-        /* --- MISSIONS REVISITÉES (PLAN D'ACTION) --- */
+        /* MISSIONS EDITORIAL */
         .editorial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         .ed-text h3 { font-family: 'Bodoni Moda', serif; font-size: 1.8rem; margin-top: 30px; margin-bottom: 10px; color: var(--black); }
         .ed-text h4 { font-size: 0.8rem; text-transform: uppercase; color: var(--gold); letter-spacing: 2px; margin-bottom: 10px; }
         .ed-text p { margin-bottom: 25px; font-size: 1rem; color: var(--gray); line-height: 1.8; }
         .ed-text p.drop-cap::first-letter { float: left; font-family: 'Bodoni Moda', serif; font-size: 4.5rem; line-height: 0.8; padding-right: 15px; color: var(--gold); }
 
-        /* --- VALEURS --- */
+        /* VALEURS */
         .values-section { background: var(--black); color: var(--white); text-align: center; }
         .values-section h2 { font-family: 'Bodoni Moda', serif; font-size: 3rem; margin-bottom: 20px; }
         .values-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 50px; }
@@ -84,7 +79,7 @@
         .value-card:hover { border-color: var(--gold); transform: translateY(-5px); }
         .value-card h4 { font-family: 'Bodoni Moda', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 15px; }
 
-        /* --- CONTACT & RESEAUX --- */
+        /* CONTACT */
         .contact-section { background: var(--white); text-align: center; }
         .contact-info { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; flex-wrap: wrap; }
         .contact-info a { 
@@ -102,7 +97,6 @@
         }
         .btn-download:hover { background: transparent; color: var(--black); }
 
-        /* --- ANIMATIONS --- */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -137,30 +131,30 @@
 
     <section id="synergie" class="reveal">
         <div class="section-header">
-            <h2>Une synergie évidente</h2>
-            <p>Ce que nous pouvons accomplir ensemble.</p>
+            <h2>Construisons ensemble</h2>
+            <p>Mon envie d'apprendre au contact de vos équipes.</p>
         </div>
         
         <div class="synergy-container">
             <div class="syn-card">
-                <h3>Ce que je vous apporte</h3>
-                <p style="color: var(--gray); margin-bottom: 20px;">Mon énergie et une solide base opérationnelle pour soutenir votre Direction de l'Offre au quotidien :</p>
+                <h3>Mes atouts pour l'équipe</h3>
+                <p style="color: var(--gray); margin-bottom: 20px;">Forte d'une première expérience opérationnelle[cite: 32], je souhaite mettre mon énergie au service de votre Direction de l'Offre :</p>
                 <ul>
-                    <li><strong>Analyse Data & Marges :</strong> Une vraie aisance sur Excel (Recherche X, TCD) et Power BI pour vous assurer des Sample Reviews d'une précision chirurgicale.</li>
-                    <li><strong>Suivi Logistique terrain :</strong> Mon poste actuel (Claudie Pierlot) m'a appris à anticiper les imprévus et fiabiliser les stocks sur le réseau Europe.</li>
-                    <li><strong>Force de Négociation :</strong> Habituée à sourcer à l'international (Worldline) avec un anglais professionnel (B2).</li>
-                    <li><strong>Esprit de Synthèse :</strong> Issue d'une prépa littéraire, je rédige des dossiers techniques clairs pour communiquer efficacement avec vos fournisseurs.</li>
+                    <li><strong>Rigueur et Data :</strong> À l'aise sur Excel (TCD, Recherche X)[cite: 18, 19], je peux assister l'équipe avec des Sample Reviews précises et organisées.</li>
+                    <li><strong>Soutien Logistique :</strong> Mon poste actuel (Claudie Pierlot) [cite: 46] m'aide à comprendre les enjeux de la supply chain et les aléas de terrain.</li>
+                    <li><strong>Appétence Sourcing :</strong> Mon stage chez Worldline [cite: 51] m'a familiarisée avec les appels d'offres et les échanges fournisseurs[cite: 52, 53].</li>
+                    <li><strong>Esprit de Synthèse :</strong> Issue d'une prépa littéraire[cite: 40], j'ai à cœur de rédiger des dossiers techniques clairs et structurés.</li>
                 </ul>
             </div>
 
             <div class="syn-card">
-                <h3>Ce que vous m'apportez</h3>
-                <p style="color: var(--gray); margin-bottom: 20px;">L'opportunité d'évoluer dans l'univers lifestyle le plus prestigieux et d'apprendre des meilleurs :</p>
+                <h3>Ce que j'aspire à apprendre</h3>
+                <p style="color: var(--gray); margin-bottom: 20px;">Votre offre représente pour moi l'opportunité d'évoluer au sein d'un univers lifestyle créatif et exigeant :</p>
                 <ul>
-                    <li><strong>L'œil Produit :</strong> Affiner ma sensibilité aux matières et aux coupes en travaillant de concert avec votre département Style.</li>
-                    <li><strong>L'Écosystème PLM :</strong> Maîtriser PLM Centric, forte de mon adaptabilité rapide aux outils ERP complexes (Basware).</li>
-                    <li><strong>L'Univers Galeries Lafayette :</strong> Comprendre de l'intérieur ce qui fait la magie et le succès de vos collections exclusives.</li>
-                    <li><strong>Le goût du challenge :</strong> Prendre des initiatives au sein d'une équipe qui fait bouger les lignes du commerce de détail.</li>
+                    <li><strong>L'œil Produit :</strong> Développer ma sensibilité aux matières et aux coupes en observant le travail conjoint de vos acheteurs et du département Style.</li>
+                    <li><strong>L'Écosystème PLM :</strong> Découvrir et maîtriser le logiciel PLM Centric, en m'appuyant sur mon aisance globale avec les outils ERP (Basware)[cite: 16].</li>
+                    <li><strong>La Culture Galeries Lafayette :</strong> Comprendre la mécanique et l'enchantement qui font le succès de vos collections de Prêt-à-Porter.</li>
+                    <li><strong>L'Audace Commerciale :</strong> Oser prendre des initiatives constructives, encadrée par une équipe inspirante.</li>
                 </ul>
             </div>
         </div>
@@ -172,20 +166,20 @@
             </div>
 
             <div class="ed-text">
-                <h2 style="font-family: 'Bodoni Moda', serif; font-size: 2.5rem; margin-bottom: 30px;">Mon Plan d'Action</h2>
-                <p class="drop-cap">Loin d'être une simple exécutante, j'ai analysé vos besoins pour y répondre avec proactivité et méthode. Voici comment j'aborderai vos trois défis principaux.</p>
+                <h2 style="font-family: 'Bodoni Moda', serif; font-size: 2.5rem; margin-bottom: 30px;">Mon implication</h2>
+                <p class="drop-cap">Avec beaucoup d'enthousiasme et d'envie d'apprendre, voici comment je souhaite m'investir concrètement pour soutenir vos acheteurs au quotidien.</p>
                 
                 <h4>Mission 01</h4>
-                <h3>Optimiser la Collection</h3>
-                <p>Je mettrai ma maîtrise des datas au service de vos <strong>Sample Reviews</strong>. Mon objectif : vous fournir une lecture immédiate et claire des prix d'achat et des marges, tout en assurant une interface fluide avec vos fournisseurs pour le suivi des premiers prototypes.</p>
+                <h3>Soutenir la Collection</h3>
+                <p>Je mettrai ma rigueur analytique au service de l'équipe pour la préparation des <strong>Sample Reviews</strong>. Je veillerai à organiser les portants avec soin, en préparant des fichiers clairs (marges, prix d'achat) pour faciliter vos prises de décision.</p>
 
                 <h4>Mission 02</h4>
-                <h3>Épauler vos Négociations</h3>
-                <p>Forte de ma première expérience d'Acheteuse Junior (Worldline), je ne me contenterai pas de préparer les rendez-vous. Je serai un véritable soutien analytique et stratégique lors de vos échanges commerciaux, y compris à l'international.</p>
+                <h3>Accompagner les Négociations</h3>
+                <p>Je m'appliquerai à préparer en amont les dossiers pour les rendez-vous fournisseurs. Mon niveau d'anglais (B2) [cite: 7] et mes premières notions de sourcing [cite: 54] me permettront de vous épauler efficacement, y compris sur les dossiers internationaux.</p>
 
                 <h4>Mission 03</h4>
-                <h3>Sécuriser la Production</h3>
-                <p>La gestion des flux n'a plus de secret pour moi grâce à mon rôle chez Claudie Pierlot. Je serai la garante de vos plannings de collection, de la relance des fournisseurs jusqu'au contrôle intransigeant de la conformité des échantillons.</p>
+                <h3>Suivre la Production</h3>
+                <p>Le contrôle de conformité et le respect des plannings demandent une grande organisation. Je ferai preuve de proactivité dans le suivi des prototypes et les relances fournisseurs, forte de mes connaissances actuelles en gestion des flux[cite: 49].</p>
             </div>
         </div>
     </section>
@@ -197,11 +191,11 @@
         <div class="values-grid">
             <div class="value-card">
                 <h4>Empowerment</h4>
-                <p style="font-size: 0.95rem; color: #aaa;">Cheffe de projet "Les Guerrières" (Diambars) : Accompagnement de sportives féminines dans leur accomplissement. Une vraie expérience de leadership.</p>
+                <p style="font-size: 0.95rem; color: #aaa;">Cheffe de projet "Les Guerrières" (Diambars) [cite: 56, 57] : Accompagnement de sportives féminines dans leur accomplissement[cite: 58]. Une belle expérience de leadership.</p>
             </div>
             <div class="value-card">
                 <h4>Solidarité</h4>
-                <p style="font-size: 0.95rem; color: #aaa;">Chargée de Logistique (Les Kollect'gers) : Coordination de maraudes hebdomadaires. Mon sens de l'organisation mis au service de l'humain.</p>
+                <p style="font-size: 0.95rem; color: #aaa;">Chargée de Logistique (Les Kollect'gers) [cite: 59, 60] : Coordination de maraudes hebdomadaires[cite: 60]. Mon sens de l'organisation mis au service de l'humain.</p>
             </div>
         </div>
     </section>
@@ -220,7 +214,7 @@
 
         <div class="download-box reveal">
             <h3 style="font-family: 'Bodoni Moda', serif; font-size: 2rem; margin-bottom: 15px;">Dossier de Candidature</h3>
-            <p style="color: var(--gray); margin-bottom: 10px;">Consultez mon profil complet au format PDF.</p>
+            <p style="color: var(--gray); margin-bottom: 10px;">Consultez mon CV complet au format PDF.</p>
             <a href="Cv_Ines_Ducos_acheteuse_sourcing_Galeries_Lafayette.pdf" download="CV_Ines_Ducos_Galeries_Lafayette.pdf" class="btn-download">Télécharger le Dossier Technique (CV)</a>
         </div>
     </section>
@@ -232,7 +226,6 @@
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
                 var elementVisible = 100;
-
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
                 }
@@ -241,6 +234,5 @@
         window.addEventListener("scroll", reveal);
         reveal();
     </script>
-
 </body>
 </html>
