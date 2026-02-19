@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inès Ducos | Portfolio Acheteuse Sourcing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --black: #111111;
+            --white: #ffffff;
+            --off-white: #f8f8f8;
+            --gold: #b8975a;
+            --gray: #666666;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--off-white); color: var(--black); line-height: 1.7; overflow-x: hidden; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-logo { font-family: 'Bodoni Moda', serif; font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--black); letter-spacing: 2px;}
+        .nav-links a { margin-left: 30px; text-decoration: none; color: var(--black); font-size: 0.85rem; text-transform: uppercase; font-weight: 500; letter-spacing: 1px; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* --- HERO HEADER PARALLAX --- */
+        .hero {
+            height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            background: linear-gradient(rgba(17, 17, 17, 0.3), rgba(17, 17, 17, 0.6)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80') center/cover fixed;
+            color: var(--white);
+            padding: 0 20px;
+        }
+        .hero-subtitle { font-size: 1rem; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 20px; animation: fadeInDown 1s ease; }
+        .hero-title { font-family: 'Bodoni Moda', serif; font-size: clamp(3rem, 8vw, 7rem); line-height: 1; text-transform: uppercase; margin-bottom: 30px; animation: fadeInUp 1s ease; }
+        .hero-btn { 
+            padding: 15px 40px; border: 1px solid var(--white); color: var(--white); text-decoration: none; 
+            text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; transition: 0.4s; animation: fadeIn 2s ease;
+        }
+        .hero-btn:hover { background: var(--white); color: var(--black); }
+
+        /* --- SECTIONS GLOBALES --- */
+        section { padding: 120px 10%; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-family: 'Bodoni Moda', serif; font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
+        .section-header p { color: var(--gold); font-style: italic; font-family: 'Bodoni Moda', serif; font-size: 1.2rem; }
+
+        /* --- LAYOUT EDITORIAL (AS SYMÉTRIQUE) --- */
+        .editorial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .ed-text p { margin-bottom: 20px; font-size: 1.05rem; color: var(--gray); }
+        .ed-text p.drop-cap::first-letter { float: left; font-family: 'Bodoni Moda', serif; font-size: 4.5rem; line-height: 0.8; padding-right: 15px; color: var(--gold); }
+        
+        /* --- EXPERIENCES (TIMELINE MAGAZINE) --- */
+        .experience-container { border-left: 2px solid var(--black); padding-left: 40px; margin-left: 20px; }
+        .job-card { position: relative; margin-bottom: 60px; }
+        .job-card::before {
+            content: ''; position: absolute; left: -47px; top: 5px; width: 12px; height: 12px; 
+            background: var(--gold); border-radius: 50%; border: 3px solid var(--off-white);
+        }
+        .job-card h3 { font-family: 'Bodoni Moda', serif; font-size: 1.8rem; margin-bottom: 5px; }
+        .job-card .company { font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 15px; display: inline-block; }
+        .job-card .date { color: var(--gray); font-style: italic; margin-left: 10px; }
+        .job-tags { margin-top: 15px; }
+        .tag { background: var(--black); color: var(--white); font-size: 0.75rem; padding: 4px 12px; text-transform: uppercase; margin-right: 10px; display: inline-block; border-radius: 20px; }
+
+        /* --- COMPETENCES DATA & OUTILS --- */
+        .skills-section { background: var(--black); color: var(--white); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .skill-item h4 { font-family: 'Bodoni Moda', serif; font-size: 1.5rem; margin-bottom: 10px; color: var(--gold); }
+        .skill-bar-bg { background: rgba(255,255,255,0.1); height: 2px; width: 100%; margin-top: 10px; position: relative; }
+        .skill-bar-fill { background: var(--gold); height: 2px; position: absolute; top: 0; left: 0; }
+
+        /* --- CONTACT & TELECHARGEMENT --- */
+        .contact-section { background: var(--white); text-align: center; }
+        .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .contact-card { padding: 40px 20px; border: 1px solid #eee; transition: 0.3s; }
+        .contact-card:hover { border-color: var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transform: translateY(-5px); }
+        .contact-card h3 { font-family: 'Bodoni Moda', serif; font-size: 1.5rem; margin-bottom: 15px; }
+        .contact-card a { color: var(--gray); text-decoration: none; font-size: 1.1rem; transition: 0.3s; }
+        .contact-card a:hover { color: var(--gold); }
+
+        .download-box { margin-top: 80px; padding: 60px; background: var(--off-white); border: 1px dashed var(--gray); }
+        .btn-download {
+            display: inline-block; padding: 20px 50px; background: var(--black); color: var(--white); 
+            text-transform: uppercase; font-weight: 600; letter-spacing: 2px; text-decoration: none; 
+            margin-top: 20px; transition: 0.4s; border: 1px solid var(--black);
+        }
+        .btn-download:hover { background: transparent; color: var(--black); }
+
+        /* --- ANIMATIONS (Scroll Reveal) --- */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .editorial-grid, .contact-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Menu caché sur mobile pour simplifier */
+            section { padding: 80px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="nav-logo">INÈS DUCOS.</a>
+        <div class="nav-links">
+            <a href="#profil">Profil</a>
+            <a href="#experiences">Expériences</a>
+            <a href="#competences">Expertise</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <p class="hero-subtitle">Candidature Alternance MAI - Septembre 2026</p>
+        <h1 class="hero-title">Acheteuse<br>Sourcing</h1>
+        <a href="#profil" class="hero-btn">Découvrir le profil</a>
+    </header>
+
+    <section id="profil" class="reveal">
+        <div class="editorial-grid">
+            <div class="ed-text">
+                <h2 style="font-family: 'Bodoni Moda', serif; font-size: 2.5rem; margin-bottom: 20px;">L'art de l'Achat, la passion du Produit.</h2>
+                <p class="drop-cap">Forte d'une première expérience opérationnelle en achats lors de mon stage de césure, je me distingue par ma proactivité et mon autonomie. Actuellement en Master 1 (Majeure Achats et Supply Chain) à Kedge Business School, je construis un profil alliant rigueur analytique et sensibilité produit.</p>
+                <p>Passée par une classe préparatoire littéraire (Hypokhâgne/Khâgne), j'ai cultivé un esprit de synthèse pointu. Passionnée par l'univers de la cosmétique et les marques féminines innovantes, je souhaite mettre mon énergie au service de la <strong>Direction de l'Offre et de l'Achat</strong> des Galeries Lafayette.</p>
+            </div>
+            <div style="background: url('https://images.unsplash.com/photo-1596462502278-27bf85033e54?auto=format&fit=crop&q=80') center/cover; height: 500px; width: 100%;">
+                </div>
+        </div>
+    </section>
+
+    <section id="experiences" style="background: var(--white);">
+        <div class="section-header reveal">
+            <h2>Parcours Professionnel</h2>
+            <p>Du pilotage d'appels d'offres à la gestion des flux physiques.</p>
+        </div>
+        
+        <div class="experience-container reveal">
+            <div class="job-card">
+                <h3>Coordinatrice Flux et Logistique Junior</h3>
+                <span class="company">Claudie Pierlot (Paris)</span><span class="date">Depuis Juillet 2025</span>
+                <p style="color: var(--gray); margin-top: 10px;">Accompagnement et support des boutiques pour la gestion des stocks et la prévention de la démarque. Contrôle des procédures (réception, transferts, retours) sur la zone France et Europe.</p>
+                <div class="job-tags">
+                    <span class="tag">Logistique</span>
+                    <span class="tag">Gestion des stocks</span>
+                    <span class="tag">Retail Mode</span>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <h3>Acheteuse Junior</h3>
+                <span class="company">Worldline (Lille)</span><span class="date">Janvier 2025 - Juillet 2025</span>
+                <p style="color: var(--gray); margin-top: 10px;">Pilotage d'appels d'offres en coordination avec les équipes Commerciales, Marketing, Data et IT. Négociation de clauses commerciales avec des fournisseurs internationaux et gestion du panel (Preferred Supplier List).</p>
+                <div class="job-tags">
+                    <span class="tag">Sourcing International</span>
+                    <span class="tag">Négociation</span>
+                    <span class="tag">Projets Data/IT</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="competences" class="skills-section">
+        <div class="section-header reveal">
+            <h2 style="color: var(--white);">Expertise & Outils</h2>
+            <p>La rigueur analytique au service de l'achat.</p>
+        </div>
+        
+        <div class="skills-grid reveal">
+            <div class="skill-item">
+                <h4>Excel</h4>
+                <p style="color: #aaa; font-size: 0.9rem;">Tableaux Croisés Dynamiques, Recherche V et Recherche X.</p>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%;"></div></div>
+            </div>
+            <div class="skill-item">
+                <h4>Power BI</h4>
+                <p style="color: #aaa; font-size: 0.9rem;">Notions avancées de visualisation des données et reporting.</p>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+            </div>
+            <div class="skill-item">
+                <h4>Basware / PLM</h4>
+                <p style="color: #aaa; font-size: 0.9rem;">Maîtrise des outils de facturation et adaptabilité aux ERP.</p>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+            </div>
+            <div class="skill-item">
+                <h4>Anglais & Espagnol</h4>
+                <p style="color: #aaa; font-size: 0.9rem;">Anglais (B2 Pro), Espagnol (B1). Négociation internationale.</p>
+                <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="section-header reveal">
+            <h2>Prête à créer l'enchantement</h2>
+            <p>Rencontrons-nous pour échanger sur vos collections.</p>
+        </div>
+
+        <div class="contact-grid reveal">
+            <div class="contact-card">
+                <h3>Téléphone</h3>
+                <a href="tel:+33782698841">07 82 69 88 41</a>
+            </div>
+            <div class="contact-card">
+                <h3>Email</h3>
+                <a href="mailto:ines.ducos@kedgebs.com">ines.ducos@kedgebs.com</a>
+            </div>
+            <div class="contact-card">
+                <h3>Localisation</h3>
+                <a href="#">Région Parisienne</a>
+            </div>
+        </div>
+
+        <div class="download-box reveal">
+            <h3 style="font-family: 'Bodoni Moda', serif; font-size: 2rem; margin-bottom: 15px;">Dossier de Candidature</h3>
+            <p style="color: var(--gray); margin-bottom: 10px;">Consultez mon CV complet au format PDF pour plus de détails sur mes engagements associatifs (Diambars, Les Kollect'gers).</p>
+            <a href="Cv_Ines_Ducos_acheteuse_sourcing_Galeries_Lafayette.pdf" download="CV_Ines_Ducos_Galeries_Lafayette.pdf" class="btn-download">Télécharger le CV (PDF)</a>
+        </div>
+    </section>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // Déclenche l'animation 100px avant que l'élément n'apparaisse
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Déclenche au chargement
+    </script>
+
+</body>
+</html>
